@@ -20,3 +20,5 @@ gitfs_remotes:
       - staging:
         - ref: develop
 ```
+
+## Gitfs Pillar roots with environments

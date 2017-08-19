@@ -10,7 +10,7 @@ Pillar files are stored separately from our state files. By default this is /srv
 ```sh
 ext_pillar:
   - git:
-    - master https://<username>:<password>@bitbucket.org/xxxx/salt-test.git:
+    - master https://github.com/nobleprog-salt/salt-pillars.git:
       - root: pillar
       - env: base
 ```
@@ -34,7 +34,7 @@ ext_pillar:
 - create file /etc/salt/master.d/extension_modules_dir.conf
 - add the following contents :
   ```
-  $> extension_modules: /srv/_custom
+  $> extension_modules: /srv/custom
   ```
 - create the file /srv/\_custom/pillar/http_time.py and set contents from (here)[https://bitbucket.org/gmanohar/salt-test/src/master/_custom/pillar/http_time.py]  
 
