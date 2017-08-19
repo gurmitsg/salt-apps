@@ -1,0 +1,56 @@
+## Pillars
+Pillar files are stored separately from our state files. By default this is /srv/pillar.
+
+### gitfs external pillar configuration
+- install gitpython      
+  ```
+  $> apt-get install python-git
+  ```
+- create file /etc/salt/master.d/ext_pillar.conf and add the following contents :     
+```sh
+ext_pillar:
+  - git:
+    - master https://<username>:<password>@bitbucket.org/xxxx/salt-test.git:
+      - root: pillar
+      - env: base
+```
+- restart salt-master
+
+### etcd external pillar configuration
+- install python-etcd       
+  ```
+  $> apt-get install python-etcd
+  ```
+- ensure your etcd server is running (see below for etcd server configuration)
+- create file /etc/salt/master.d/etcd.conf with contents as seen (here)[https://bitbucket.org/gmanohar/salt-test/src/master/config/master/master.d/etcd.conf)]
+- add the following line to /etc/salt/master.d/ext_pillar.conf:       
+  ```
+    - etcd: my_etcd_config
+  ```
+
+
+### custom external pillar module
+- create directory /srv/\_custom/pillar
+- create file /etc/salt/master.d/extension_modules_dir.conf
+- add the following contents :
+  ```
+  $> extension_modules: /srv/_custom
+  ```
+- create the file /srv/\_custom/pillar/http_time.py and set contents from (here)[https://bitbucket.org/gmanohar/salt-test/src/master/_custom/pillar/http_time.py]  
+
+
+
+
+### etcd server installation (ubuntu 16). Pillars
+```sh
+$> wget https://github.com/coreos/etcd/releases/download/v3.2.5/etcd-v3.2.5-linux-amd64.tar.gz
+$> tar xzvf etcd-v3.2.5-linux-amd64.tar.gz
+$> cd etcd-v3.2.5-linux-amd64.tar.gz
+$> ./etcd --listen-client-urls 'http://0.0.0.0:2379' --advertise-client-urls 'http://localhost:2379'
+```
+
+Add a key:value
+```sh
+./etcdctl set somekey "somevalue"
+./etcdctl set anotherkey "anothervalue"
+```
