@@ -1,0 +1,22 @@
+## Gitfs Backend
+- Create file /etc/salt/master.d/fileserver_backend.conf with content as seen (here)[https://github.com/nobleprog-salt/salt-apps/blob/master/config/master/master.d/fileserver_backend.conf]     
+- Create file /etc/salt/master.d/gitfs.conf with content as seen (here)[https://github.com/nobleprog-salt/salt-apps/blob/master/config/master/master.d/gitfs.conf]      
+- Restart salt-master
+
+
+## Gitfs Backend with environments
+- First ensure that all minions have the environment value set in /etc/salt/minion
+- Create file /etc/salt/master.d/merge.conf with contents as seen (here)[https://github.com/nobleprog-salt/salt-apps/blob/master/config/master/master.d/merge.conf]
+- Ensure the file /etc/salt/master.d/gitfs.conf has listed all the relevant branches and their references. For example :
+```sh
+gitfs_remotes:
+  - https://github.com/nobleprog-salt/salt-apps.git:
+    - root: salt
+    - saltenv:
+      - base:
+        - ref: master
+      - develop:
+        - ref: develop
+      - staging:
+        - ref: develop
+```
