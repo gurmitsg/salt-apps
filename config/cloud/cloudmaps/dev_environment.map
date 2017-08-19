@@ -1,0 +1,21 @@
+dev-database:
+  - db1.dev.com:
+      grains:
+        role: database
+
+
+dev-loadbalancer:
+  - lb1.dev.com:
+      grains:
+        role: load-balancer-1
+  - lb2.dev.com:
+      grains:
+        role: load-balancer-2
+
+dev-web:
+{% set webservers = ('web-1.dev.com','web-2.dev.com') %}
+{% for server in webservers %}
+  - {{ server }}:
+      grains:
+        role: web
+{% endfor %}
