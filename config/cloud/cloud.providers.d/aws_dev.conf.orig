@@ -1,0 +1,55 @@
+my-awsdev-provider:
+
+  minion:
+    master: 52.14.155.26
+    environment: develop
+    pillarenv: develop
+    slack:
+      channel: saltcache
+      api_key: <api_key>
+      username: <username>
+      as_user: true
+    my-pagerduty-account:
+      pagerduty.subdomain: <sub_domain>
+      pagerduty.api_key: <api_key>
+    beacons:
+      load:
+        1m:
+          - 0.0
+          - 0.4
+        interval: 10
+      diskusage:
+          - /: 60%
+          - interval: 10
+      mybeacon:
+        count: 32
+        interval: 10
+
+  grains:
+    node_type: broker
+    release: 1.0.1
+    group: develop
+
+  # master/salt communication
+  ssh_interface: private_ips
+
+  # Set the EC2 access credentials
+  id: '<access-key>'
+  key: '<secret-key>'
+
+  # Make sure this key is owned by root with permissions 0400.
+  private_key: <path/to/private/key>
+  keyname: <keyname>
+  #securitygroup: masters.mongodb.ca.jivepoc.com
+
+
+  # aws region
+  location: us-west-2
+
+  # manage volume and name for quick re provisioning
+  rename_on_destroy: True
+  delvol_on_destroy: True
+
+  # ssh username
+  ssh_username: ubuntu
+  driver: ec2

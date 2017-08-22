@@ -2,6 +2,7 @@ base:
   '*':
     - myfiles
     - dbusers
+    - webserver
   'os_family:debian':
     - match: grain
     - frontend
