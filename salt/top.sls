@@ -1,4 +1,4 @@
-base:
+staging:
   '*':
     - webserver
     - myfiles
