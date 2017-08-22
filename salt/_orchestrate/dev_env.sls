@@ -18,7 +18,7 @@ database_deploy:
     - tgt: 'node_type:database'
     - tgt_type: grain
     - sls:
-      - dbusers
+      - jenkins
 
 load_balancer_deploy:
   salt.state:
