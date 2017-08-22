@@ -1,6 +1,5 @@
 staging:
   '*':
-    - webserver
     - myfiles
     - dbusers
   'os_family:debian':
