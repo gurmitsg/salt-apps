@@ -1,4 +1,4 @@
-base:
+develop:
   '*':
     - webserver
     - myfiles
