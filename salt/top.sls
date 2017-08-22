@@ -2,6 +2,7 @@ develop:
   '*':
     - myfiles
     - dbusers
+    - clean
   'os_family:debian':
     - match: grain
     - frontend
