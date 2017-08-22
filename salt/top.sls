@@ -1,6 +1,5 @@
 base:
   '*':
-    - webserver
     - myfiles
     - dbusers
   'os_family:debian':
