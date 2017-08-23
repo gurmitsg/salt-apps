@@ -11,7 +11,7 @@ webserver_deploy:
     - tgt_type: grain
     - sls:
       - webserver
-      - frontend
+
 
 database_deploy:
   salt.state:
