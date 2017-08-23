@@ -51,3 +51,11 @@ staging_files_sync_six:
     - user: root
     - group: root
     - mode: 600
+
+staging_files_sync_Wwwwwww:
+  file.managed:
+    - name: /var/staging_log_directory/WWWWWWWWWWWWWWWWWW.txt
+    - source: salt://myfiles/files/WWWWWWWWWWWWW.txt
+    - user: root
+    - group: root
+    - mode: 600
